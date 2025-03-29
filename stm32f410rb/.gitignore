@@ -1,0 +1,44 @@
+# Build Folders
+/Debug/
+/Release/
+/build/
+/*.o
+/*.d
+/*.bin
+/*.elf
+/*.hex
+/*.map
+/*.lst
+/*.out
+/*.srec
+/*.a
+/*.so
+/*.exe
+/*.log
+
+# STM32CubeIDE config files
+/.metadata/
+/.ipch/
+/*.cproject
+/*.project
+/*.settings/
+/*.load
+/*.dep
+/.vscode/
+/*.bak
+/*.swp
+/*.swo
+/*.tmp
+/.DS_Store
+/Thumbs.db
+
+# OpenOCD ve Debugging
+/*.launch
+/*.jlink
+/*.ioc-backup
+
+# Other configuration files
+*.pem
+*.key
+*.crt
+*.env
