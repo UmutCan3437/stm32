@@ -26,10 +26,15 @@ typedef struct
     volatile uint32_t RCC_CSR;                /*!< RCC clock control & status register,                         Address offset: 0x74 */                      
     volatile uint32_t RCC_RESERVED6[2];       /*!< Reserved, 0x78-0x7C                                                               */                              
     volatile uint32_t RCC_SSCGR;              /*!< RCC spread spectrum clock generation register,               Address offset: 0x80 */                          
-    volatile uint32_t RESERVED7[2];           /*!< Reserved, 0x84-0x88                                                              */                          
-    volatile uint32_t RCC_DCKCFGR;            /*!< RCC DCKCFGR configuration register,                          Address offset: 0x8C  */                          
-    volatile uint32_t RCC_RESERVED8;          /*!< RCC Clocks Gated Enable Register,                            Address offset: 0x90  */                              
+    volatile uint32_t RESERVED7[2];           /*!< Reserved, 0x84-0x88                                                               */                          
+    volatile uint32_t RCC_DCKCFGR;            /*!< RCC DCKCFGR configuration register,                          Address offset: 0x8C */                          
+    volatile uint32_t RCC_RESERVED8;          /*!< RCC Clocks Gated Enable Register,                            Address offset: 0x90 */                              
     volatile uint32_t RCC_DCKCFGR2;           /*!< RCC Dedicated Clocks configuration register 2,               Address offset: 0x94 */                          
 }RccRegisterDef_t;
+
+
+#define RCC_REGS        (RccRegisterDef_t *)(RCC_BASE_ADDR)
+
+/* TODO: find a way to enable peripheral clocks in a generic way*/
 
 
