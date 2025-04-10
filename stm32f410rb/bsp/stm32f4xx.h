@@ -14,10 +14,12 @@
 
 /*Bit manipulation*/
 /*TODO: fix */
-#define BIT(n)                  ((uint32_t)(1) << (n))
+#define BIT(n)                  ((1U) << (n))
 #define SET_BIT(REG, BIT)       ((REG) |=  (BIT))
 #define CLEAR_BIT(REG, BIT)     ((REG) &= ~(BIT))
 #define TOGGLE_BIT(REG, BIT)    ((REG) ^=  (BIT))
 #define REG_BIT(REG, BIT)       ((REG) &   (BIT))
+
+#define WRITE_REG(REG,VAL)      ((REG) = (uint32_t)(VAL))
 
 #endif
