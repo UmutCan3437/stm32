@@ -29,6 +29,11 @@ int main(void)
     GPIOC_CLK_EN();
     GPIOH_CLK_EN();
 
+    GPIOA_CLK_DISABLE();
+    GPIOB_CLK_DISABLE();
+    GPIOC_CLK_DISABLE();
+    GPIOH_CLK_DISABLE();
+
     /* Loop forever */
 	for(;;);
 }

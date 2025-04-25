@@ -35,7 +35,14 @@ typedef struct
 
 #define RCC_REGS        ((RccRegTypedef_t*)RCC_BASE_ADDR)
 
-#define GPIOA_CLK_EN()    (RCC_REGS->AHB1ENR |= (1 << 0U))
-#define GPIOB_CLK_EN()    (RCC_REGS->AHB1ENR |= (1 << 1U))
-#define GPIOC_CLK_EN()    (RCC_REGS->AHB1ENR |= (1 << 2U))
-#define GPIOH_CLK_EN()    (RCC_REGS->AHB1ENR |= (1 << 7U))
+/*GPIO Peripheral Clock Enable Macros*/
+#define GPIOA_CLK_EN()          (RCC_REGS->AHB1ENR |= (1 << 0U))
+#define GPIOB_CLK_EN()          (RCC_REGS->AHB1ENR |= (1 << 1U))
+#define GPIOC_CLK_EN()          (RCC_REGS->AHB1ENR |= (1 << 2U))
+#define GPIOH_CLK_EN()          (RCC_REGS->AHB1ENR |= (1 << 7U))
+
+/*GPIO Peripheral Clock Disable Macros*/
+#define GPIOA_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 0U))
+#define GPIOB_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 1U))
+#define GPIOC_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 2U))
+#define GPIOH_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 7U))
