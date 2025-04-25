@@ -35,8 +35,6 @@ typedef struct
 
 #define RCC_REGS        ((RccRegisterDef_t *)(RCC_BASE_ADDR))
 
-#define USART2_PCLK_EN()  ( SET_BIT(RCC_REGS->RCC_APB1ENR, 17) )
-
 /* TODO: find a way to enable peripheral clocks in a generic way*/
 
 

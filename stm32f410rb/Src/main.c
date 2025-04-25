@@ -25,7 +25,6 @@
 
 int main(void)
 {
-  USART2_PCLK_EN();
     /* Loop forever */
 	
 }
