@@ -22,6 +22,10 @@ typedef struct
 #define GPIOC   ((volatile GpioRegisterTypeDef_t*)(GPIOC_BASE_ADDR))
 #define GPIOH   ((volatile GpioRegisterTypeDef_t*)(GPIOH_BASE_ADDR))
 
+/*GPIO Pin State Definitions*/
+#define GPIO_PIN_SET     (1U)
+#define GPIO_PIN_RESET   (2U)
+
 /*GPIO Pin Definitions*/
 #define GPIO_PIN_0       (0U)
 #define GPIO_PIN_1       (1U)
@@ -94,7 +98,17 @@ typedef struct{
     GpioConfig_t gpioConfig;
 }GpioHandleTypeDef_t;
 
-/*There is an error for GPIOH ? */
+/*Init GPIO peripheral for spesific handle val*/
 StatusTypeDef_t gpioInit(GpioHandleTypeDef_t* Handle);
 
+/*Toggle a pin*/
+StatusTypeDef_t gpioTogglePin(GpioHandleTypeDef_t* Handle, uint8_t pinNumber);
+
+/*Write Pin*/
+StatusTypeDef_t gpioPinWrite(GpioHandleTypeDef_t* Handle, uint8_t pinNumber, uint8_t pinState);
+
+/*Read Pin*/
+uint8_t gpioReadPin(GpioHandleTypeDef_t* Handle, uint8_t pinNumber);
+
+/*TODO: Replace Handle parameter with GpioRegisterTypeDef_t* as a gpio port, if there is no need to use gpioConfig*/
 #endif

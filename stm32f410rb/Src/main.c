@@ -22,15 +22,30 @@
 #include "driver/rcc.h"
 #include "driver/gpio.h"
 
+void delay(void)
+{
+    volatile uint32_t count = 0;
+    for (count = 0; count < 400000; count++) {
+
+    }
+}
+
 int main(void)
 {
+	GpioHandleTypeDef_t Handle;
 
-	GpioHandleTypeDef_t Handle2;
-	Handle2.gpioBaseAddr = GPIOH;
-	Handle2.gpioConfig.pinNumber = GPIO_PIN_3;
-	Handle2.gpioConfig.gpioPinMode = GPIO_ANALOG;
+	Handle.gpioBaseAddr = GPIOA;
+	Handle.gpioConfig.pinNumber = GPIO_PIN_5;
+	Handle.gpioConfig.gpioPinMode = GPIO_OUTPUT;
+	Handle.gpioConfig.gpioOutputType = PUSH_PULL;
+	
+	gpioInit(&Handle);
 
-	gpioInit(&Handle2);
-    /* Loop forever */
-	for(;;);
+	for(;;)
+	{
+	gpioPinWrite(&Handle, GPIO_PIN_5, GPIO_PIN_SET);
+	delay();
+	gpioPinWrite(&Handle, GPIO_PIN_5, GPIO_PIN_RESET);
+	delay();
+	}
 }
