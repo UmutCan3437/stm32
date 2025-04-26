@@ -1,4 +1,8 @@
+#ifndef STM32F4XX_H
+#define STM32F4XX_H
+
 #include <stdint.h>
+#include <stdlib.h>
 
 /*TODO: add comment */
 #define APB1_BUS_BASE_ADDR  (0x40000000U)
@@ -14,4 +18,12 @@
 /*RCC Base Address*/
 #define RCC_BASE_ADDR              (AHB1_BUS_BASE_ADDR + 0x3800U)
 
+
+typedef enum{
+    NO_ERROR,
+    IO_ERROR,
+    INVALID_PARAM
+}StatusTypeDef_t;
+
+#endif
 

@@ -20,20 +20,17 @@
 #include <stdio.h>
 #include "bsp/stm32f4xx.h"
 #include "driver/rcc.h"
+#include "driver/gpio.h"
 
 int main(void)
 {
-	/*Test code*/
-    GPIOA_CLK_EN();
-    GPIOB_CLK_EN();
-    GPIOC_CLK_EN();
-    GPIOH_CLK_EN();
 
-    GPIOA_CLK_DISABLE();
-    GPIOB_CLK_DISABLE();
-    GPIOC_CLK_DISABLE();
-    GPIOH_CLK_DISABLE();
+	GpioHandleTypeDef_t Handle2;
+	Handle2.gpioBaseAddr = GPIOH;
+	Handle2.gpioConfig.pinNumber = GPIO_PIN_3;
+	Handle2.gpioConfig.gpioPinMode = GPIO_ANALOG;
 
+	gpioInit(&Handle2);
     /* Loop forever */
 	for(;;);
 }

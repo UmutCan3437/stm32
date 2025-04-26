@@ -1,5 +1,7 @@
-#include "bsp/stm32f4xx.h"
+#ifndef RCC_H
+#define RCC_H
 
+#include "bsp/stm32f4xx.h"
 
 /*RCC peripheral register definitions*/
 typedef struct 
@@ -46,3 +48,5 @@ typedef struct
 #define GPIOB_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 1U))
 #define GPIOC_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 2U))
 #define GPIOH_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 7U))
+
+#endif
