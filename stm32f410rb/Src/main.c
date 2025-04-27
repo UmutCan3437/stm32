@@ -62,6 +62,6 @@ int main(void)
 
 void EXTI15_10_IRQHandler(void)
 {
-	ClearInterrupts(EXTI13, EXTI15_10_IRQ);
+	ClearExtiInterrupts(EXTI13, EXTI15_10_IRQ);
 	gpioTogglePin(&Handle, GPIO_PIN_5);
 }

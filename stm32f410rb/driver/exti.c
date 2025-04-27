@@ -1,7 +1,7 @@
 #include "exti.h"
 
 
-void ClearInterrupts(int8_t extiLineNumber, uint8_t irqNumber)
+void ClearExtiInterrupts(int8_t extiLineNumber, uint8_t irqNumber)
 {
     if(-1 != extiLineNumber){
         EXTI->PR |= (1U << extiLineNumber);

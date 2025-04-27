@@ -52,6 +52,6 @@ typedef struct {
 #define EXTI14      (14U)
 #define EXTI15      (15U)
 
-void ClearInterrupts(int8_t extiLineNumber, uint8_t irqNumber);
+void ClearExtiInterrupts(int8_t extiLineNumber, uint8_t irqNumber);
 
 #endif
