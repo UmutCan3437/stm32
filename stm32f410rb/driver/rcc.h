@@ -38,15 +38,29 @@ typedef struct
 #define RCC_REGS        ((RccRegTypedef_t*)RCC_BASE_ADDR)
 
 /*GPIO Peripheral Clock Enable Macros*/
-#define GPIOA_CLK_EN()          (RCC_REGS->AHB1ENR |= (1 << 0U))
-#define GPIOB_CLK_EN()          (RCC_REGS->AHB1ENR |= (1 << 1U))
-#define GPIOC_CLK_EN()          (RCC_REGS->AHB1ENR |= (1 << 2U))
-#define GPIOH_CLK_EN()          (RCC_REGS->AHB1ENR |= (1 << 7U))
+#define GPIOA_CLK_EN()          (RCC_REGS->AHB1ENR |= (1U << 0U))
+#define GPIOB_CLK_EN()          (RCC_REGS->AHB1ENR |= (1U << 1U))
+#define GPIOC_CLK_EN()          (RCC_REGS->AHB1ENR |= (1U << 2U))
+#define GPIOH_CLK_EN()          (RCC_REGS->AHB1ENR |= (1U << 7U))
 
 /*GPIO Peripheral Clock Disable Macros*/
-#define GPIOA_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 0U))
-#define GPIOB_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 1U))
-#define GPIOC_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 2U))
-#define GPIOH_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1 << 7U))
+#define GPIOA_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1U << 0U))
+#define GPIOB_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1U << 1U))
+#define GPIOC_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1U << 2U))
+#define GPIOH_CLK_DISABLE()     (RCC_REGS->AHB1ENR &= ~(1U << 7U))
+
+
+/*SYSCFG Peripheral Clock Enable*/
+#define SYSCFG_CLK_ENABLE()      (RCC_REGS->APB2ENR |=  (1U << 14U))
+
+/*SYSCFG Peripheral Clock Disable*/
+#define SYSCFG_CLK_DISABLE()     (RCC_REGS->APB2ENR &= ~(1U << 14U))
+
+/*EXTI Peripheral Clock Enable*/
+#define EXTI_CLK_ENABLE()        (RCC_REGS->APB2ENR |=  (1U << 16U))           
+
+/*EXTI Peripheral Clock Disable*/
+#define EXTI_CLK_DISABLE()       (RCC_REGS->APB2ENR &= ~(1U << 16U))
+
 
 #endif

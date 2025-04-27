@@ -21,6 +21,7 @@
 #include "bsp/stm32f4xx.h"
 #include "driver/rcc.h"
 #include "driver/gpio.h"
+#include "driver/exti.h"
 
 void delay(void)
 {
@@ -29,23 +30,38 @@ void delay(void)
 
     }
 }
+GpioHandleTypeDef_t Handle;
+GpioHandleTypeDef_t Handle2;
 
 int main(void)
 {
-	GpioHandleTypeDef_t Handle;
+
 
 	Handle.gpioBaseAddr = GPIOA;
 	Handle.gpioConfig.pinNumber = GPIO_PIN_5;
 	Handle.gpioConfig.gpioPinMode = GPIO_OUTPUT;
 	Handle.gpioConfig.gpioOutputType = PUSH_PULL;
 	
+	Handle2.gpioBaseAddr = GPIOC;
+	Handle2.gpioConfig.pinNumber = GPIO_PIN_13;
+	Handle2.gpioConfig.gpioPinMode = GPIO_INPUT;
+	Handle2.gpioConfig.gpioOutputType = PUSH_PULL;
+	Handle2.gpioConfig.gpioPuPdSelection = NO_PUP_PDOWN;
+	Handle2.gpioConfig.gpioInterruptDetectType = EXTI_TRIGGER_SELECTION_FT;
 	gpioInit(&Handle);
+	gpioInit(&Handle2);
 
-	for(;;)
+	gpioInitIRQ(&Handle2, EXTI13, EXTI15_10_IRQ);
+
+	while(1)
 	{
-	gpioPinWrite(&Handle, GPIO_PIN_5, GPIO_PIN_SET);
-	delay();
-	gpioPinWrite(&Handle, GPIO_PIN_5, GPIO_PIN_RESET);
-	delay();
+		;
+
 	}
+}
+
+void EXTI15_10_IRQHandler(void)
+{
+	ClearInterrupts(EXTI13, EXTI15_10_IRQ);
+	gpioTogglePin(&Handle, GPIO_PIN_5);
 }

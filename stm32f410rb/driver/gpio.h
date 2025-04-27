@@ -3,6 +3,7 @@
 
 #include "bsp/stm32f4xx.h"
 #include "driver/rcc.h"
+#include "driver/exti.h"
 
 typedef struct 
 {
@@ -22,9 +23,11 @@ typedef struct
 #define GPIOC   ((volatile GpioRegisterTypeDef_t*)(GPIOC_BASE_ADDR))
 #define GPIOH   ((volatile GpioRegisterTypeDef_t*)(GPIOH_BASE_ADDR))
 
+/* Gpio Port Selection for SYSCFG EXTI Configuration */
+#define GPIO_PORT_SELECTION(x)		((x) == GPIOA ? 0U : (x) == GPIOB ? 1U : (x) == GPIOC ? 2U : 7U);
 /*GPIO Pin State Definitions*/
 #define GPIO_PIN_SET     (1U)
-#define GPIO_PIN_RESET   (2U)
+#define GPIO_PIN_RESET   (0U)
 
 /*GPIO Pin Definitions*/
 #define GPIO_PIN_0       (0U)
@@ -91,6 +94,7 @@ typedef struct {
     uint8_t gpioOutputSpeed;
     uint8_t gpioPuPdSelection;
     uint8_t gpioAlternateFunc;
+    uint8_t gpioInterruptDetectType; /*FT, RT FRT*/
 }GpioConfig_t;
 
 typedef struct{
@@ -111,4 +115,7 @@ StatusTypeDef_t gpioPinWrite(GpioHandleTypeDef_t* Handle, uint8_t pinNumber, uin
 uint8_t gpioReadPin(GpioHandleTypeDef_t* Handle, uint8_t pinNumber);
 
 /*TODO: Replace Handle parameter with GpioRegisterTypeDef_t* as a gpio port, if there is no need to use gpioConfig*/
+
+StatusTypeDef_t gpioInitIRQ(GpioHandleTypeDef_t* Handle, uint8_t extiLineNumber, uint8_t irqNumber);
+
 #endif
